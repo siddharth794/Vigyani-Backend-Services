@@ -1,0 +1,61 @@
+services:
+  mino_ai:
+    build:
+      context: ./mino-ai
+      dockerfile: Dockerfile
+    container_name: mino_ai
+    ports:
+      - "5000:5000"
+    networks:
+      - vigyani_network
+    restart: unless-stopped
+
+  vigyani_inventory:
+    build:
+      context: ./vigyani_inventory
+      dockerfile: Dockerfile
+    container_name: vigyani_inventory
+    ports:
+      - "5002:5002"
+    networks:
+      - vigyani_network
+    depends_on:
+      - mino_ai
+    restart: unless-stopped
+
+  agentic_backend_saas:
+    build:
+      context: ./agentic-saas-backend
+      dockerfile: Dockerfile
+    container_name: agentic_backend_saas
+    env_file:
+      - ./agentic-saas-backend/.env
+    ports:
+      - "5001:5001"
+    networks:
+      - vigyani_network
+    depends_on:
+      - vigyani_inventory
+    restart: unless-stopped
+
+  agentic_saas_rag:
+    build:
+      context: ./agentic-saas-backend/rag_service
+      dockerfile: Dockerfile
+    container_name: agentic_saas_rag
+    env_file:
+      - ./agentic-saas-backend/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - vigyani_network
+    depends_on:
+      - agentic_backend_saas
+    restart: unless-stopped
+  # NOTE: vigyani_ui removed for local development
+  # Run frontend separately with: cd vigyani_ui && npm run dev
+  # This enables hot reload and faster development iteration
+
+networks:
+  vigyani_network:
+    driver: bridge
