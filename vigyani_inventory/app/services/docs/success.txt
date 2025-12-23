@@ -1,0 +1,15 @@
+Dear {receiver_name},
+
+We are pleased to confirm that your payment of ₹{amount} has been successfully processed. Thank you for your business!
+
+Transaction Details:
+- Amount Paid: ₹{amount}
+- Status: Successful
+- Date: {current_date}
+
+Your payment and order have been processed accordingly. If you have any questions or need further assistance, please don't hesitate to contact our customer support team.
+
+Thank you for choosing our services. We appreciate your business!
+
+Best regards,
+Vigyani Inventory Team

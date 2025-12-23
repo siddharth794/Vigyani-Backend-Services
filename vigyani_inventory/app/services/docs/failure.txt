@@ -1,0 +1,21 @@
+Dear {receiver_name},
+
+We regret to inform you that your payment of ₹{amount} could not be processed successfully. 
+
+Transaction Details:
+- Amount: ₹{amount}
+- Status: Failed
+- Date: {current_date}
+
+This could be due to several reasons such as:
+- Insufficient funds
+- Incorrect card details
+- Bank declined the transaction
+- Technical issues
+
+Please try the payment again or contact your bank for more information. If you continue to experience issues, our customer support team is here to help.
+
+We apologize for any inconvenience caused and look forward to serving you soon.
+
+Best regards,
+Vigyani Inventory Team
